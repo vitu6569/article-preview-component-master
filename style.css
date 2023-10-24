@@ -1,0 +1,234 @@
+:root {
+    --Very-Dark-Grayish-Blue: hsl(217, 19%, 35%);
+    --Desaturated-Dark-Blue: hsl(214, 17%, 51%);
+    --Grayish-Blue: hsl(212, 23%, 69%);
+    --Light-Grayish-Blue: hsl(210, 46%, 95%);
+
+    --white: white;
+
+    --fs-13: 13px;
+}
+/*
+### Headings
+font-family: 'Manrope', sans-serif;
+- Weights: 500, 700
+*/
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+}
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+img, ion-icon {
+    display: block;
+}
+a {
+    text-decoration: none;
+    color: var(--white);
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    background: var(--Light-Grayish-Blue);
+    padding: 20px;
+}
+#container {
+    display: grid;
+    grid-template-columns: 285px minmax(300px, 445px);
+    max-width: 730px;
+    border-radius: 10px;
+    background: var(--white);
+    box-shadow: 6px 6px 5px hsla(0, 0%, 0%, 0.02),
+                25px 25px 20px hsla(0, 0% 0%, 0.05),
+                100px 100px 80px hsla(0, 0%, 0%, 0.05);
+}
+
+#image {
+    border-radius: 10px 0 0 10px;
+    overflow: hidden;
+}
+#drawers {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+    transition: all 0.5s ease;
+}
+#container:hover, #drawers:hover {
+    transform: scale(1.1);
+}
+
+#content {
+    background: var(--white);
+    padding: 32px 48px;
+    border-radius:  0 10px 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+#title {
+    font-size: 18px;
+    font-family: 'Manrope', sans-serif;
+    color: var(--Very-Dark-Grayish-Blue);
+    line-height: 1.4;
+}
+
+#text {
+    font-size: var(--fs-13);
+    color: var(--Desaturated-Dark-Blue);
+    line-height: 1.5;
+}
+
+#profileAndShare {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+#imageProfile img {
+    width: 40px;
+    border-radius: 99px;
+}
+#name {
+    color: var(--Very-Dark-Grayish-Blue);
+    font-size: var(--fs-13);
+}
+#date {
+    color: var(--Grayish-Blue);
+    font-size: var(--fs-13);
+}
+
+#shareOptions {
+    position: relative;
+}
+#buttonShare {
+    font-size: 20px;
+    color: var(--Desaturated-Dark-Blue);
+    padding: 6px;
+    border-radius: 20px;
+    background: var(--Light-Grayish-Blue);
+    transition: all 0.25s ease;
+}
+#buttonShare:hover, #buttonShare:active {
+    background-color: var(--Desaturated-Dark-Blue);
+    color: var(--white);
+}
+#share {
+    --scale: 1;
+    --translateX: -50%;
+    --translateY: 0;
+
+    background: var(--Very-Dark-Grayish-Blue);
+    position: absolute;
+    bottom: calc(100% + 28px);
+    left: 50%;
+    transform: translate(var(--translateX), var(--translateY)) scale(var(--scale));
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 17px 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px -5px #0003;
+    transform-origin: bottom;
+    visibility: hidden;
+    transition: all 0.25s ease;
+}
+#share.active {
+    --scale: 1;
+    visibility: visible;
+}
+#share::after {
+    content: '';
+    background: var(--Very-Dark-Grayish-Blue);
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -60%) rotate(45deg);
+}
+#share span {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: var(--Grayish-Blue);
+    margin-right: 5px;
+}
+#share ion-icon {
+    font-size: 22px;
+}
+#share ion-icon:hover, 
+#titleAndText #title:hover,
+#titleAndText #name:hover {
+    filter: invert(1);
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --fs-13: 12px;
+    }
+    #container {
+        grid-template-columns: 1fr;
+        max-width: 294px;
+        overflow: hidden;
+    }
+    #image, #content {
+        border-radius: 0;
+    }
+    #image {
+        height: 180px;
+    }
+    #content {
+        padding: 30px 28px 20px;
+    }
+    #title {
+        font-size: 15px;
+    }
+    #text {
+        margin-bottom: 30px;
+    }
+    #profileAndShare {
+        position: relative;
+    }
+    #imageProfile img {
+        width: 35px;
+        height: 35px;
+    }
+    #shareOptions {
+        position: static;
+        z-index: 1;
+    }
+    #buttonShare {
+        font-size: 16px;
+    }
+    #share {
+        --scale: 1;
+        --translateX: 0
+        --translateY: 100%;
+        
+        inset: -20px -28px;
+        border-radius: 0;
+        padding: 17px 30px;
+        z-index: -1;
+    }
+    #share.active {
+        --translateY: 0;
+    }
+}
